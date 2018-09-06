@@ -1,0 +1,499 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		34232D662381DB735290F17A4EFF50BE /* GlPopView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E3F2E070CCBCCCB5ADC2DE12F19597 /* GlPopView-dummy.m */; };
+		380030C3DF83F0AE864BB84B6F6C0277 /* GlPopView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0528AB2D3BC9819AE1376C146E53440B /* GlPopView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		506816A6E19DC496C8059D63AB54111A /* GlPopViewConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 115352E9F2FFEAA103F75B3B65807F12 /* GlPopViewConfig.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		6679DB00D6A610AE1B6F5C64117B1D8F /* GlPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F56C56C6BAFC9CB4E45A4EB4CF19F97 /* GlPopView.m */; };
+		83F835B14815BB4D1DCCE903074A354C /* GlPopViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E2673FC842A1BAF2847096C88B974C /* GlPopViewConfig.m */; };
+		A7F512603A47EA62507A018B156A7F4C /* Pods-GlChartView-Master-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F1845B3EE215C0E5CC34F449325CB238 /* Pods-GlChartView-Master-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		63F101ACF63395EACC005F03E34A950F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 86A0AC1AC9163251278BCD2351DC1909;
+			remoteInfo = GlPopView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0528AB2D3BC9819AE1376C146E53440B /* GlPopView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GlPopView.h; path = GlPopView/GlPopView.h; sourceTree = "<group>"; };
+		115352E9F2FFEAA103F75B3B65807F12 /* GlPopViewConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GlPopViewConfig.h; path = GlPopView/GlPopViewConfig.h; sourceTree = "<group>"; };
+		14DADFBA89723D5DD8FF4B9E5B8CA7A0 /* libPods-GlChartView-Master.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-GlChartView-Master.a"; path = "libPods-GlChartView-Master.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F56C56C6BAFC9CB4E45A4EB4CF19F97 /* GlPopView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GlPopView.m; path = GlPopView/GlPopView.m; sourceTree = "<group>"; };
+		4127C60A4423A2AB60C0ACE50E5A369B /* Pods-GlChartView-Master-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GlChartView-Master-frameworks.sh"; sourceTree = "<group>"; };
+		4CD745F6B03D20E8AC19F82E16F297B5 /* Pods-GlChartView-Master.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GlChartView-Master.release.xcconfig"; sourceTree = "<group>"; };
+		51E2673FC842A1BAF2847096C88B974C /* GlPopViewConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GlPopViewConfig.m; path = GlPopView/GlPopViewConfig.m; sourceTree = "<group>"; };
+		59DB42282C414FFC3AAFF7F13673ABD1 /* Pods-GlChartView-Master-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GlChartView-Master-acknowledgements.markdown"; sourceTree = "<group>"; };
+		760A59C26C2E52AE5AD148C9CE3B6E85 /* Pods-GlChartView-Master-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GlChartView-Master-acknowledgements.plist"; sourceTree = "<group>"; };
+		7877524A7949542EECE8B02E6DE70282 /* Pods-GlChartView-Master-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GlChartView-Master-resources.sh"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9FB7D1078325EDDF699D84C9B954857F /* Pods-GlChartView-Master.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GlChartView-Master.debug.xcconfig"; sourceTree = "<group>"; };
+		A1E3F2E070CCBCCCB5ADC2DE12F19597 /* GlPopView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GlPopView-dummy.m"; sourceTree = "<group>"; };
+		B75419069A022500E60550C44206861F /* libGlPopView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libGlPopView.a; path = libGlPopView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA3E041383A80A13544C22F3C3372C30 /* GlPopView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GlPopView-prefix.pch"; sourceTree = "<group>"; };
+		E666B1F1F7FC33121B32DB8085AB340C /* GlPopView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GlPopView.xcconfig; sourceTree = "<group>"; };
+		F1845B3EE215C0E5CC34F449325CB238 /* Pods-GlChartView-Master-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GlChartView-Master-dummy.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1CE33F14C56A3343B9FFBD4C94070501 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BF7605A491F803BFF3A30DB0A229FCB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		21576CC14FE5846A5DAC1A40F8D78E60 /* GlPopView */ = {
+			isa = PBXGroup;
+			children = (
+				0528AB2D3BC9819AE1376C146E53440B /* GlPopView.h */,
+				3F56C56C6BAFC9CB4E45A4EB4CF19F97 /* GlPopView.m */,
+				115352E9F2FFEAA103F75B3B65807F12 /* GlPopViewConfig.h */,
+				51E2673FC842A1BAF2847096C88B974C /* GlPopViewConfig.m */,
+				2C7F54E219E659F87B2770F15F5D4E91 /* Support Files */,
+			);
+			name = GlPopView;
+			path = GlPopView;
+			sourceTree = "<group>";
+		};
+		2C7F54E219E659F87B2770F15F5D4E91 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E666B1F1F7FC33121B32DB8085AB340C /* GlPopView.xcconfig */,
+				A1E3F2E070CCBCCCB5ADC2DE12F19597 /* GlPopView-dummy.m */,
+				CA3E041383A80A13544C22F3C3372C30 /* GlPopView-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GlPopView";
+			sourceTree = "<group>";
+		};
+		32BDBA4C28D5CCDABAB961C6F531853D /* Pods-GlChartView-Master */ = {
+			isa = PBXGroup;
+			children = (
+				59DB42282C414FFC3AAFF7F13673ABD1 /* Pods-GlChartView-Master-acknowledgements.markdown */,
+				760A59C26C2E52AE5AD148C9CE3B6E85 /* Pods-GlChartView-Master-acknowledgements.plist */,
+				F1845B3EE215C0E5CC34F449325CB238 /* Pods-GlChartView-Master-dummy.m */,
+				4127C60A4423A2AB60C0ACE50E5A369B /* Pods-GlChartView-Master-frameworks.sh */,
+				7877524A7949542EECE8B02E6DE70282 /* Pods-GlChartView-Master-resources.sh */,
+				9FB7D1078325EDDF699D84C9B954857F /* Pods-GlChartView-Master.debug.xcconfig */,
+				4CD745F6B03D20E8AC19F82E16F297B5 /* Pods-GlChartView-Master.release.xcconfig */,
+			);
+			name = "Pods-GlChartView-Master";
+			path = "Target Support Files/Pods-GlChartView-Master";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */,
+				B3A23309A5A3152B5888D69589B4DA3C /* Pods */,
+				860986BEE2D8382097547D807057AE43 /* Products */,
+				D1BD50A272F9732829D406BC63EC65A3 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		860986BEE2D8382097547D807057AE43 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B75419069A022500E60550C44206861F /* libGlPopView.a */,
+				14DADFBA89723D5DD8FF4B9E5B8CA7A0 /* libPods-GlChartView-Master.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B3A23309A5A3152B5888D69589B4DA3C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				21576CC14FE5846A5DAC1A40F8D78E60 /* GlPopView */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D1BD50A272F9732829D406BC63EC65A3 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				32BDBA4C28D5CCDABAB961C6F531853D /* Pods-GlChartView-Master */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7CB55635B64D7718A1433EFBF6C1462A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				380030C3DF83F0AE864BB84B6F6C0277 /* GlPopView.h in Headers */,
+				506816A6E19DC496C8059D63AB54111A /* GlPopViewConfig.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2450800F1ADCF509EA898E2E98BBDE6D /* Pods-GlChartView-Master */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6D1BFA7FF3138972AC8A5A220C73AB9 /* Build configuration list for PBXNativeTarget "Pods-GlChartView-Master" */;
+			buildPhases = (
+				238A30F9B2CFAA6978FAB5A08E9C9757 /* Sources */,
+				1CE33F14C56A3343B9FFBD4C94070501 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF73B5AFF9DD473AA6EF975E643DD7A6 /* PBXTargetDependency */,
+			);
+			name = "Pods-GlChartView-Master";
+			productName = "Pods-GlChartView-Master";
+			productReference = 14DADFBA89723D5DD8FF4B9E5B8CA7A0 /* libPods-GlChartView-Master.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		86A0AC1AC9163251278BCD2351DC1909 /* GlPopView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 867B3EDD9CCCC82B72959006219671A5 /* Build configuration list for PBXNativeTarget "GlPopView" */;
+			buildPhases = (
+				4ECB41B2893CE6018CDE07294AD3DDE5 /* Sources */,
+				5BF7605A491F803BFF3A30DB0A229FCB /* Frameworks */,
+				7CB55635B64D7718A1433EFBF6C1462A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GlPopView;
+			productName = GlPopView;
+			productReference = B75419069A022500E60550C44206861F /* libGlPopView.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 860986BEE2D8382097547D807057AE43 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				86A0AC1AC9163251278BCD2351DC1909 /* GlPopView */,
+				2450800F1ADCF509EA898E2E98BBDE6D /* Pods-GlChartView-Master */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		238A30F9B2CFAA6978FAB5A08E9C9757 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7F512603A47EA62507A018B156A7F4C /* Pods-GlChartView-Master-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4ECB41B2893CE6018CDE07294AD3DDE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34232D662381DB735290F17A4EFF50BE /* GlPopView-dummy.m in Sources */,
+				6679DB00D6A610AE1B6F5C64117B1D8F /* GlPopView.m in Sources */,
+				83F835B14815BB4D1DCCE903074A354C /* GlPopViewConfig.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DF73B5AFF9DD473AA6EF975E643DD7A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GlPopView;
+			target = 86A0AC1AC9163251278BCD2351DC1909 /* GlPopView */;
+			targetProxy = 63F101ACF63395EACC005F03E34A950F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1EE19F5DD95931924296F637BF18BD8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		273A773308013EFB14F0DA1517ACB9AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E666B1F1F7FC33121B32DB8085AB340C /* GlPopView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/GlPopView/GlPopView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = GlPopView;
+				PRODUCT_NAME = GlPopView;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		38377DB0D0B643380DB089C58950860C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CD745F6B03D20E8AC19F82E16F297B5 /* Pods-GlChartView-Master.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8A8592C84A97EAE63FD1DAA3BAC56354 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FB7D1078325EDDF699D84C9B954857F /* Pods-GlChartView-Master.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		932F8301A41A9F668EBAF12B9471881F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E666B1F1F7FC33121B32DB8085AB340C /* GlPopView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/GlPopView/GlPopView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = GlPopView;
+				PRODUCT_NAME = GlPopView;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F4568DEE257655D290C2B9CEAB37C934 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EE19F5DD95931924296F637BF18BD8F /* Debug */,
+				F4568DEE257655D290C2B9CEAB37C934 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		867B3EDD9CCCC82B72959006219671A5 /* Build configuration list for PBXNativeTarget "GlPopView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				273A773308013EFB14F0DA1517ACB9AF /* Debug */,
+				932F8301A41A9F668EBAF12B9471881F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6D1BFA7FF3138972AC8A5A220C73AB9 /* Build configuration list for PBXNativeTarget "Pods-GlChartView-Master" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A8592C84A97EAE63FD1DAA3BAC56354 /* Debug */,
+				38377DB0D0B643380DB089C58950860C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

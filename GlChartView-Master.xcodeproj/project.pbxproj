@@ -13,9 +13,17 @@
 		1947E5FC213F89A500B5E932 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1947E5FB213F89A500B5E932 /* Assets.xcassets */; };
 		1947E5FF213F89A500B5E932 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1947E5FD213F89A500B5E932 /* LaunchScreen.storyboard */; };
 		1947E602213F89A500B5E932 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1947E601213F89A500B5E932 /* main.m */; };
+		1947E616213F89D900B5E932 /* GlChartConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1947E609213F89D900B5E932 /* GlChartConfig.m */; };
+		1947E617213F89D900B5E932 /* GlChartDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1947E60A213F89D900B5E932 /* GlChartDataModel.m */; };
+		1947E618213F89D900B5E932 /* GlBasicAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1947E60B213F89D900B5E932 /* GlBasicAnimation.m */; };
+		1947E619213F89D900B5E932 /* GlDrawLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1947E60E213F89D900B5E932 /* GlDrawLineView.m */; };
+		1947E61A213F89D900B5E932 /* GlXYCoordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1947E614213F89D900B5E932 /* GlXYCoordView.m */; };
+		1947E61B213F89D900B5E932 /* GlLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1947E615213F89D900B5E932 /* GlLineChartView.m */; };
+		5952EDBB835C5833E41E1718 /* libPods-GlChartView-Master.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 966257D0D31BB632DE3388B1 /* libPods-GlChartView-Master.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0139D908BB48E2C8546CDBE8 /* Pods-GlChartView-Master.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlChartView-Master.release.xcconfig"; path = "Pods/Target Support Files/Pods-GlChartView-Master/Pods-GlChartView-Master.release.xcconfig"; sourceTree = "<group>"; };
 		1947E5EF213F89A500B5E932 /* GlChartView-Master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GlChartView-Master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1947E5F2213F89A500B5E932 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1947E5F3213F89A500B5E932 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,6 +34,21 @@
 		1947E5FE213F89A500B5E932 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1947E600213F89A500B5E932 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1947E601213F89A500B5E932 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1947E609213F89D900B5E932 /* GlChartConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlChartConfig.m; sourceTree = "<group>"; };
+		1947E60A213F89D900B5E932 /* GlChartDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlChartDataModel.m; sourceTree = "<group>"; };
+		1947E60B213F89D900B5E932 /* GlBasicAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlBasicAnimation.m; sourceTree = "<group>"; };
+		1947E60C213F89D900B5E932 /* GlLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlLineChartView.h; sourceTree = "<group>"; };
+		1947E60D213F89D900B5E932 /* GlXYCoordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlXYCoordView.h; sourceTree = "<group>"; };
+		1947E60E213F89D900B5E932 /* GlDrawLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlDrawLineView.m; sourceTree = "<group>"; };
+		1947E60F213F89D900B5E932 /* GlChartViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlChartViewDelegate.h; sourceTree = "<group>"; };
+		1947E610213F89D900B5E932 /* GlChartConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlChartConfig.h; sourceTree = "<group>"; };
+		1947E611213F89D900B5E932 /* GlBasicAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlBasicAnimation.h; sourceTree = "<group>"; };
+		1947E612213F89D900B5E932 /* GlChartDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlChartDataModel.h; sourceTree = "<group>"; };
+		1947E613213F89D900B5E932 /* GlDrawLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlDrawLineView.h; sourceTree = "<group>"; };
+		1947E614213F89D900B5E932 /* GlXYCoordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlXYCoordView.m; sourceTree = "<group>"; };
+		1947E615213F89D900B5E932 /* GlLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlLineChartView.m; sourceTree = "<group>"; };
+		966257D0D31BB632DE3388B1 /* libPods-GlChartView-Master.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GlChartView-Master.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB6BCA757A4F7E2E9026E3C8 /* Pods-GlChartView-Master.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlChartView-Master.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GlChartView-Master/Pods-GlChartView-Master.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +56,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5952EDBB835C5833E41E1718 /* libPods-GlChartView-Master.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04E42B91FA5E938680B602ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				966257D0D31BB632DE3388B1 /* libPods-GlChartView-Master.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1947E5E6213F89A500B5E932 = {
 			isa = PBXGroup;
 			children = (
 				1947E5F1213F89A500B5E932 /* GlChartView-Master */,
 				1947E5F0213F89A500B5E932 /* Products */,
+				EE3EBD7F91090BC59F9B58F8 /* Pods */,
+				04E42B91FA5E938680B602ED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +92,7 @@
 		1947E5F1213F89A500B5E932 /* GlChartView-Master */ = {
 			isa = PBXGroup;
 			children = (
+				1947E608213F89D900B5E932 /* GlChartView */,
 				1947E5F2213F89A500B5E932 /* AppDelegate.h */,
 				1947E5F3213F89A500B5E932 /* AppDelegate.m */,
 				1947E5F5213F89A500B5E932 /* ViewController.h */,
@@ -71,6 +106,35 @@
 			path = "GlChartView-Master";
 			sourceTree = "<group>";
 		};
+		1947E608213F89D900B5E932 /* GlChartView */ = {
+			isa = PBXGroup;
+			children = (
+				1947E611213F89D900B5E932 /* GlBasicAnimation.h */,
+				1947E60B213F89D900B5E932 /* GlBasicAnimation.m */,
+				1947E610213F89D900B5E932 /* GlChartConfig.h */,
+				1947E609213F89D900B5E932 /* GlChartConfig.m */,
+				1947E612213F89D900B5E932 /* GlChartDataModel.h */,
+				1947E60A213F89D900B5E932 /* GlChartDataModel.m */,
+				1947E60F213F89D900B5E932 /* GlChartViewDelegate.h */,
+				1947E613213F89D900B5E932 /* GlDrawLineView.h */,
+				1947E60E213F89D900B5E932 /* GlDrawLineView.m */,
+				1947E60C213F89D900B5E932 /* GlLineChartView.h */,
+				1947E615213F89D900B5E932 /* GlLineChartView.m */,
+				1947E60D213F89D900B5E932 /* GlXYCoordView.h */,
+				1947E614213F89D900B5E932 /* GlXYCoordView.m */,
+			);
+			path = GlChartView;
+			sourceTree = SOURCE_ROOT;
+		};
+		EE3EBD7F91090BC59F9B58F8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB6BCA757A4F7E2E9026E3C8 /* Pods-GlChartView-Master.debug.xcconfig */,
+				0139D908BB48E2C8546CDBE8 /* Pods-GlChartView-Master.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,6 +142,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1947E605213F89A500B5E932 /* Build configuration list for PBXNativeTarget "GlChartView-Master" */;
 			buildPhases = (
+				28E72A00565D9A5BA05A7935 /* [CP] Check Pods Manifest.lock */,
 				1947E5EB213F89A500B5E932 /* Sources */,
 				1947E5EC213F89A500B5E932 /* Frameworks */,
 				1947E5ED213F89A500B5E932 /* Resources */,
@@ -136,12 +201,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		28E72A00565D9A5BA05A7935 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GlChartView-Master-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1947E5EB213F89A500B5E932 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1947E61A213F89D900B5E932 /* GlXYCoordView.m in Sources */,
+				1947E618213F89D900B5E932 /* GlBasicAnimation.m in Sources */,
 				1947E5F7213F89A500B5E932 /* ViewController.m in Sources */,
+				1947E617213F89D900B5E932 /* GlChartDataModel.m in Sources */,
+				1947E616213F89D900B5E932 /* GlChartConfig.m in Sources */,
+				1947E619213F89D900B5E932 /* GlDrawLineView.m in Sources */,
+				1947E61B213F89D900B5E932 /* GlLineChartView.m in Sources */,
 				1947E602213F89A500B5E932 /* main.m in Sources */,
 				1947E5F4213F89A500B5E932 /* AppDelegate.m in Sources */,
 			);
@@ -281,6 +373,7 @@
 		};
 		1947E606213F89A500B5E932 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB6BCA757A4F7E2E9026E3C8 /* Pods-GlChartView-Master.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +390,7 @@
 		};
 		1947E607213F89A500B5E932 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0139D908BB48E2C8546CDBE8 /* Pods-GlChartView-Master.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

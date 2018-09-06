@@ -1,0 +1,16 @@
+PODS:
+  - GlPopView (1.0.2)
+
+DEPENDENCIES:
+  - GlPopView
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - GlPopView
+
+SPEC CHECKSUMS:
+  GlPopView: 21533a3d4aabdb41d40c85039aff87356bbeede1
+
+PODFILE CHECKSUM: 054ce433a5f90200dd5b5f2791d7dbac56e0f3d8
+
+COCOAPODS: 1.5.3
