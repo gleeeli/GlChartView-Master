@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "GlChartView"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "带动画的折线图库(A animation Chart View)"
 
   # This description is used to generate tags and improve search results.
@@ -80,7 +80,7 @@ it is a good chart animation view
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/gleeeli/GlChartView-Master.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/gleeeli/GlChartView-Master.git", :tag => "1.0.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
