@@ -108,7 +108,7 @@
         shapeLayer.path = linePath.CGPath;
         shapeLayer.lineWidth = _uiconFig.lineWidth;
         shapeLayer.fillColor = nil;
-        shapeLayer.strokeColor = _uiconFig.lineColor.CGColor;
+        shapeLayer.strokeColor = [self getColorWithIndex:_curIndex].CGColor;
         //添加动画
         [shapeLayer addAnimation:animation forKey:@"strokeEndAnimation"];
         [self.layer addSublayer:shapeLayer];
@@ -130,6 +130,20 @@
     //动画结束位置
     circleAnimation.toValue = @(1);
     [circleLayer addAnimation:circleAnimation forKey:@"circleAnimation"];
+}
+
+- (UIColor *)getColorWithIndex:(NSInteger)index{
+    UIColor *nowColor;
+    if ([_uiconFig.lineColors count] > 0) {
+        NSInteger colorIndex = index % [_uiconFig.lineColors count];
+        if (colorIndex >=0 && colorIndex < [_uiconFig.lineColors count]) {
+            nowColor = _uiconFig.lineColors[colorIndex];
+        }
+    }else{
+        nowColor = _uiconFig.lineColor;
+    }
+    
+    return nowColor;
 }
 
 - (UIBezierPath *)getCirleWithSize:(CGSize )size{

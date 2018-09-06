@@ -25,7 +25,7 @@
     config.lineColor = [UIColor colorWithRed:56/255.0 green:137/255.0 blue:255/255.0 alpha:1];
     config.circleWidth = 3;
     config.decimalNum = 2;
-    config.speed = 200;
+    config.speed = 60;
     return config;
 }
 @end
