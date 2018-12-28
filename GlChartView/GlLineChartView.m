@@ -2,7 +2,7 @@
 //  GlLineChartView.m
 //  YKCharts
 //
-//  Created by 小柠檬 on 2018/8/23.
+//  Created by gleeeli on 2018/8/23.
 //  Copyright © 2018年 gleeeli. All rights reserved.
 //
 
@@ -11,6 +11,7 @@
 #import "GlXYCoordView.h"
 #import "GlPopView.h"
 
+//version 1.0.4
 #define  MinItemWith 10
 @interface GlLineChartView()<GlDrawLineViewDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate>
 @property (nonatomic, strong) GlDrawLineView *drawLineView;

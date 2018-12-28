@@ -2,7 +2,7 @@
 //  GlChartDataModel.h
 //  YKCharts
 //
-//  Created by 小柠檬 on 2018/9/5.
+//  Created by gleeeli on 2018/9/5.
 //  Copyright © 2018年 gleeeli. All rights reserved.
 //
 
