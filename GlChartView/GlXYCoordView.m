@@ -75,7 +75,7 @@
     
     for (int i = 0; i < [self.titleArray count]; i++) {
         NSString *title = self.titleArray[i];
-        CGFloat nowX = _itemWith * (i + 1);
+        CGFloat nowX = self.offsetSPaceXY + _itemWith * (i + 1);
         
         //小凸点
         if (self.isNeedSubscriptLine) {

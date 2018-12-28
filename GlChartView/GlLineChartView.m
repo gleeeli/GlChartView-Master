@@ -18,14 +18,18 @@
 @property (nonatomic, strong) GlChartDataModel *dataSource;
 @property (nonatomic, strong) GlChartConfig      *uiConfig;
 @property (nonatomic, strong) NSMutableArray *drawPoints;
-@property (nonatomic, assign) CGFloat xItemWidth;//x间距宽度
+//x间距宽度 第一个不考虑进去
+@property (nonatomic, assign) CGFloat xItemWidth;
 @property (nonatomic, assign) CGFloat chartYLength;//y轴线高度
 @property (nonatomic, assign) CGFloat xBottomHeight;//x轴线和文字总高度
 @property (nonatomic, assign) CGFloat yLeftWidth;//y轴线和文字总高度
 @property (nonatomic, assign) NSInteger numberOfYLines;
 @property (nonatomic, assign) CGFloat pointOffsety;//点偏移值
 @property (nonatomic, assign) CGFloat topOffset;//顶部偏移
-@property (nonatomic, assign) CGFloat offsetXWidth;//x宽度偏移
+////x轴最后一个元素显示不全的考虑，增加点宽度
+@property (nonatomic, assign) CGFloat xRightSpaceWidth;
+//x轴第一个元素偏移值，默认为一个元素宽度，考虑文字过长左边被切的情况
+@property (nonatomic, assign) CGFloat xOffsetfirstItemX;
 @property (nonatomic, strong) GlXYCoordView *coordYview;
 @property (nonatomic, strong) GlXYCoordView *coordXview;
 @property (nonatomic, strong) GlPopView *showBackView;
@@ -60,7 +64,6 @@
     _chartYLength = self.bounds.size.height - _xBottomHeight - self.topOffset;
     _xItemWidth = 40;
     self.numberOfYLines = 3;
-    self.offsetXWidth = 20;
     
     if (_drawPoints == nil) {
         _drawPoints = [NSMutableArray new];
@@ -88,18 +91,26 @@
     CGFloat maxYWordWidth = [self contentLength:array font:_uiConfig.yDescFront];
     self.yLeftWidth = maxYWordWidth + 5;//调节y轴宽度 字的宽度上增加点宽度
     
-    CGFloat drawVisibleWith = self.bounds.size.width - self.yLeftWidth - self.offsetXWidth;
     CGFloat maxXWordWidth = [self contentLength:_dataSource.xDescriptionDataSource font:_uiConfig.xDescFront];
-    _xItemWidth = [_dataSource.xDescriptionDataSource count] > 0? drawVisibleWith / [_dataSource.xDescriptionDataSource count]:MinItemWith;
+    CGFloat minSpaceWidth = maxXWordWidth * 0.5 > MinItemWith? maxXWordWidth * 0.5:MinItemWith;
+    
+    self.xRightSpaceWidth = minSpaceWidth;
+    
+    //此处减minSpaceWidth 不考虑进第一个元素，第一个元素坐标定死为 minSpaceWidth
+    CGFloat drawVisibleWith = self.bounds.size.width - self.yLeftWidth - self.xRightSpaceWidth - minSpaceWidth;
+    
+    // -1 不考虑第一个
+    _xItemWidth = [_dataSource.xDescriptionDataSource count] > 0? drawVisibleWith /([_dataSource.xDescriptionDataSource count] - 1):MinItemWith;
     
     if (_xItemWidth < maxXWordWidth) {//显示区域无法满足显示这么多的时候
         
         if(_uiConfig.iscurtailX){//缩减x轴
 //            CGFloat relMinWidth = _xItemWidth;
             //最多显示个数
-            NSInteger maxShowNum = drawVisibleWith / maxXWordWidth;
+            NSInteger maxShowNum = drawVisibleWith / maxXWordWidth + 1;
             NSInteger allCount = [_dataSource.xDescriptionDataSource count];
-            NSInteger multiple = allCount / maxShowNum;
+            //需要减少的倍数
+            NSInteger multiple = roundf(allCount / (float)maxShowNum);
             
             NSMutableArray *array = [[NSMutableArray alloc] init];
             for(int i =0; i < allCount; i++){
@@ -117,6 +128,10 @@
         }
     }
     _xItemWidth = _xItemWidth < MinItemWith? MinItemWith:_xItemWidth;
+    
+    //得到元素跨度后计算出偏移值，因为其它控件都是按元素宽度排坐标的
+    self.xOffsetfirstItemX = minSpaceWidth - _xItemWidth;
+    
     NSLog(@"最小宽度:%f",_xItemWidth);
 }
 
@@ -133,7 +148,7 @@
         CGFloat percentage = interval > 0? (1 - fabs(number-_dataSource.min)/labs(interval)) : 1;
         NSLog(@"percentage:%f",percentage);
         CGFloat yOffset = _chartYLength  * percentage + self.pointOffsety;
-        CGFloat xOffset = _xItemWidth * (i + 1);
+        CGFloat xOffset = self.xOffsetfirstItemX + _xItemWidth * (i + 1);
         CGPoint drawPoint = CGPointMake(xOffset, yOffset);
         [_drawPoints addObject:[NSValue valueWithCGPoint:drawPoint]];
     }
@@ -165,7 +180,7 @@
 -(void)installXLines{
     CGFloat count = [_dataSource.xDescriptionDataSource count];
     CGFloat y = self.bounds.size.height - self.xBottomHeight;
-    GlXYCoordView *coordXview = [[GlXYCoordView alloc] initWithFrame:CGRectMake(0, y, _xItemWidth * count + self.offsetXWidth, self.xBottomHeight)];
+    GlXYCoordView *coordXview = [[GlXYCoordView alloc] initWithFrame:CGRectMake(0, y, _xItemWidth * count + self.xRightSpaceWidth + self.xOffsetfirstItemX, self.xBottomHeight)];
     self.coordXview = coordXview;
     coordXview.itemWith = _xItemWidth;
     coordXview.directon = GlDirectionX;
@@ -174,6 +189,7 @@
     coordXview.wordColor = _uiConfig.xDescColor;
     coordXview.wordFont = _uiConfig.xDescFront;
     coordXview.iscurtailHiddenEmptyTitle = _uiConfig.iscurtailX;
+    coordXview.offsetSPaceXY = self.xOffsetfirstItemX;
     [self.contentScrollView addSubview:coordXview];
     [self.contentScrollView sendSubviewToBack:coordXview];
 }
@@ -188,11 +204,11 @@
     sRect.size.width = sRect.size.width - self.yLeftWidth;
     _contentScrollView.frame = sRect;
     CGFloat contentWidth = _xItemWidth * (_dataSource.xDescriptionDataSource.count);
-    _contentScrollView.contentSize = CGSizeMake(contentWidth + self.offsetXWidth, self.bounds.size.height);
+    _contentScrollView.contentSize = CGSizeMake(contentWidth + self.xRightSpaceWidth + self.xOffsetfirstItemX, self.bounds.size.height);
     
     //绘图
     CGFloat bottomDrawOffset = 10;//防止底部被截断
-    self.drawLineView.frame = CGRectMake(0, self.topOffset - self.pointOffsety, contentWidth + self.offsetXWidth, _chartYLength + self.pointOffsety + bottomDrawOffset);
+    self.drawLineView.frame = CGRectMake(0, self.topOffset - self.pointOffsety, contentWidth + self.xRightSpaceWidth, _chartYLength + self.pointOffsety + bottomDrawOffset);
 }
 
 -(void)emptyCharts{
