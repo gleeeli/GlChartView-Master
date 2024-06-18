@@ -78,9 +78,8 @@
 //}
 
 - (void)startChatAnimationAtIndex{
-    NSLog(@"执行下一个");
     if (_curIndex >= [_pointsArray count]) {
-        NSLog(@"全部执行完成");
+        //NSLog(@"全部执行完成");
         return;
     }
     NSValue *pointValue = [_pointsArray objectAtIndex:_curIndex];
@@ -94,24 +93,30 @@
         //[keysArray addObject:(__bridge id)[self getCirle:point].CGPath];
         UIBezierPath *linePath = [self getOneToOneLinePoint:point nextPoint:nextPoint];
         
-        GlBasicAnimation *animation = [GlBasicAnimation animationWithKeyPath:@"strokeEnd"];
-        duration = [self distanceForTwoPoint:point another:nextPoint] / _uiconFig.speed;
-        //每次动画的持续时间
-        animation.duration = duration;
-        //动画起始位置
-        animation.fromValue = @(0);
-        //动画结束位置
-        animation.toValue = @(1);
-        animation.gldelegate = self;
-        
         CAShapeLayer *shapeLayer = [CAShapeLayer layer];
         shapeLayer.path = linePath.CGPath;
         shapeLayer.lineWidth = _uiconFig.lineWidth;
         shapeLayer.fillColor = nil;
         shapeLayer.strokeColor = [self getColorWithIndex:_curIndex].CGColor;
-        //添加动画
-        [shapeLayer addAnimation:animation forKey:@"strokeEndAnimation"];
+        
         [self.layer addSublayer:shapeLayer];
+        
+        if (_uiconFig.speed > 0) {
+            duration = [self distanceForTwoPoint:point another:nextPoint] / _uiconFig.speed;
+            GlBasicAnimation *animation = [GlBasicAnimation animationWithKeyPath:@"strokeEnd"];
+            //每次动画的持续时间
+            animation.duration = duration;
+            //动画起始位置
+            animation.fromValue = @(0);
+            //动画结束位置
+            animation.toValue = @(1);
+            animation.gldelegate = self;
+            
+            //添加动画
+            [shapeLayer addAnimation:animation forKey:@"strokeEndAnimation"];
+        }else {
+            [self animationStopHandle];
+        }
     }
     
     CAShapeLayer *circleLayer = [CAShapeLayer layer];
@@ -122,14 +127,16 @@
     circleLayer.frame = cirRect;
     [self.layer addSublayer:circleLayer];
     
-    CABasicAnimation *circleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    //每次动画的持续时间
-    circleAnimation.duration = duration * 0.5;
-    //动画起始位置
-    circleAnimation.fromValue = @(0.5);
-    //动画结束位置
-    circleAnimation.toValue = @(1);
-    [circleLayer addAnimation:circleAnimation forKey:@"circleAnimation"];
+    if (_uiconFig.speed > 0) {
+        CABasicAnimation *circleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        //每次动画的持续时间
+        circleAnimation.duration = duration * 0.5;
+        //动画起始位置
+        circleAnimation.fromValue = @(0.5);
+        //动画结束位置
+        circleAnimation.toValue = @(1);
+        [circleLayer addAnimation:circleAnimation forKey:@"circleAnimation"];
+    }
 }
 
 - (UIColor *)getColorWithIndex:(NSInteger)index{
@@ -169,8 +176,12 @@
 
 #pragma mark CAAnimationDelegate
 - (void)animationDidStop:(CAAnimation *)anim{
-    _curIndex ++;
+    [self animationStopHandle];
     [self.layer removeAnimationForKey:@"strokeEndAnimation"];
+}
+
+- (void)animationStopHandle {
+    _curIndex ++;
     [self startChatAnimationAtIndex];
 }
 
@@ -193,6 +204,6 @@
         index = [_pointsArray count];
     }
     [self.delegate touchAtIndex:index];
-    NSLog(@"touchPoint:%f,%f",touchPoint.x,touchPoint.y);
+    //NSLog(@"touchPoint:%f,%f",touchPoint.x,touchPoint.y);
 }
 @end

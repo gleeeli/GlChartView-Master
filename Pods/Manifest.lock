@@ -5,7 +5,7 @@ DEPENDENCIES:
   - GlPopView
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - GlPopView
 
 SPEC CHECKSUMS:
@@ -13,4 +13,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 054ce433a5f90200dd5b5f2791d7dbac56e0f3d8
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.15.2

@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GlChartDataModel.h"
+#import "GlChartConfig.h"
 
 @protocol GlChartViewDelegate <NSObject>
-- (NSArray *)glPopClickShowContent:(GlChartDataModel *)dataSource index:(NSInteger)index;
+- (NSArray *)glPopClickShowContent:(GlChartConfig *)dataSource index:(NSInteger)index;
 @end

@@ -8,6 +8,12 @@
 
 #import "GlChartConfig.h"
 
+
+@interface GlChartConfig ()
+@property (nonatomic,assign) NSInteger max;
+@property (nonatomic,assign) NSInteger min;
+@end
+
 @implementation GlChartConfig
 + (GlChartConfig *)getCommConfig{
     //y轴
@@ -26,6 +32,52 @@
     config.circleWidth = 3;
     config.decimalNum = 2;
     config.speed = 200;
+    
+    config.pointHintTextFront = [UIFont systemFontOfSize:12.0];
+    config.pointHintTextColor = [UIColor colorWithWhite:1 alpha:0.8];
     return config;
+}
+
+-(NSInteger)max{
+    if (_maxValue != 0) {
+        return  _maxValue * ChartMulriple;
+    }
+    NSInteger tempMax = 0;
+    for (NSNumber *number in self.scaleNumbers) {
+        if ([number integerValue] > tempMax) {
+            tempMax = [number integerValue];
+        }
+    }
+    _max = tempMax;
+    return _max;
+}
+
+-(NSInteger)min{
+    if (_minValue != 0) {
+        return  _minValue * ChartMulriple;
+    }
+    NSInteger tempMin = [self.scaleNumbers.firstObject integerValue];
+    for (NSNumber *number in self.scaleNumbers) {
+        if ([number integerValue] < tempMin) {
+            tempMin = [number integerValue];
+        }
+    }
+    if (tempMin < 0) {
+        _min = tempMin;
+    }else{
+        _min = 0;
+    }
+    return _min;
+}
+
+- (void)setOriginNumbers:(NSArray *)originNumbers{
+    _originNumbers = originNumbers;
+    NSMutableArray *muArray = [NSMutableArray array];
+    for (int i = 0; i < [originNumbers count]; i++) {
+        NSInteger now = [originNumbers[i] doubleValue] * ChartMulriple;
+        [muArray addObject:[NSNumber numberWithInteger:now]];
+    }
+    
+    _scaleNumbers = muArray;
 }
 @end

@@ -16,8 +16,7 @@
 @interface GlLineChartView()<GlDrawLineViewDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate>
 @property (nonatomic, strong) GlDrawLineView *drawLineView;
 @property (nonatomic, strong) UIScrollView *contentScrollView;
-@property (nonatomic, strong) GlChartDataModel *dataSource;
-@property (nonatomic, strong) GlChartConfig      *uiConfig;
+@property (nonatomic, strong) GlChartConfig *config;
 @property (nonatomic, strong) NSMutableArray *drawPoints;
 //x间距宽度 第一个不考虑进去
 @property (nonatomic, assign) CGFloat xItemWidth;
@@ -34,6 +33,7 @@
 @property (nonatomic, strong) GlXYCoordView *coordYview;
 @property (nonatomic, strong) GlXYCoordView *coordXview;
 @property (nonatomic, strong) GlPopView *showBackView;
+@property (nonatomic, strong) UIView *textBackView;
 @property (nonatomic, assign) CGPoint curSelPoint;
 @property (nonatomic, assign) CGSize curPopSize;
 @end
@@ -71,17 +71,21 @@
     }
 }
 
--(void)setupDataSource:(GlChartDataModel *)data withUIConfgi:(GlChartConfig *)config{
-    _dataSource = data;
-    _uiConfig = config;
+-(void)setupwithConfgi:(GlChartConfig *)config {
+    _config = config;
     [self emptyCharts];
-    if (data.scaleNumbers.count == 0) {
+    if (config.scaleNumbers.count == 0) {
         return;
+    }
+    
+    if (config.linesCountY > 0) {
+        self.numberOfYLines = config.linesCountY;
     }
     [self updateItemWidth];
     [self installYLines];
     [self installXLines];
     [self installDrawlines];
+    [self installPointsText];
     
     [self setNeedsLayout];
     [self layoutIfNeeded];
@@ -89,10 +93,10 @@
 
 - (void)updateItemWidth{
     NSArray *array = [self getYArray];
-    CGFloat maxYWordWidth = [self contentLength:array font:_uiConfig.yDescFront];
+    CGFloat maxYWordWidth = [self contentLength:array font:_config.yDescFront];
     self.yLeftWidth = maxYWordWidth + 5;//调节y轴宽度 字的宽度上增加点宽度
     
-    CGFloat maxXWordWidth = [self contentLength:_dataSource.xDescriptionDataSource font:_uiConfig.xDescFront];
+    CGFloat maxXWordWidth = [self contentLength:_config.xDescriptionDataSource font:_config.xDescFront];
     CGFloat minSpaceWidth = maxXWordWidth * 0.5 > MinItemWith? maxXWordWidth * 0.5:MinItemWith;
     
     self.xRightSpaceWidth = minSpaceWidth;
@@ -101,28 +105,28 @@
     CGFloat drawVisibleWith = self.bounds.size.width - self.yLeftWidth - self.xRightSpaceWidth - minSpaceWidth;
     
     // -1 不考虑第一个
-    _xItemWidth = [_dataSource.xDescriptionDataSource count] > 0? drawVisibleWith /([_dataSource.xDescriptionDataSource count] - 1):MinItemWith;
+    _xItemWidth = [_config.xDescriptionDataSource count] > 1? drawVisibleWith /([_config.xDescriptionDataSource count] - 1):MinItemWith;
     
     if (_xItemWidth < maxXWordWidth) {//显示区域无法满足显示这么多的时候
         
-        if(_uiConfig.iscurtailX){//缩减x轴
+        if(_config.iscurtailX){//缩减x轴
 //            CGFloat relMinWidth = _xItemWidth;
             //最多显示个数
             NSInteger maxShowNum = drawVisibleWith / maxXWordWidth + 1;
-            NSInteger allCount = [_dataSource.xDescriptionDataSource count];
+            NSInteger allCount = [_config.xDescriptionDataSource count];
             //需要减少的倍数
             NSInteger multiple = roundf(allCount / (float)maxShowNum);
             
             NSMutableArray *array = [[NSMutableArray alloc] init];
             for(int i =0; i < allCount; i++){
                 if(i % multiple == 0){
-                    [array addObject:_dataSource.xDescriptionDataSource[i]];
+                    [array addObject:_config.xDescriptionDataSource[i]];
                 }
                 else{
                     [array addObject:@""];
                 }
             }
-            _dataSource.xDescriptionDataSource = array;
+            _config.xDescriptionDataSource = array;
             //_xItemWidth = maxXWordWidth;
         }else{
             _xItemWidth = maxXWordWidth;
@@ -140,20 +144,53 @@
  计算折线每个点的坐标
  */
 -(void)installDrawlines{
-    for (NSInteger i = 0 ; i < _dataSource.scaleNumbers.count; i ++){
-        NSNumber *data = [_dataSource.scaleNumbers objectAtIndex:i];
+    for (NSInteger i = 0 ; i < _config.scaleNumbers.count; i ++){
+        NSNumber *data = [_config.scaleNumbers objectAtIndex:i];
         double number = [data doubleValue];
         //计算 y 的位置 （当前数字在整个y的百分比）
-        long interval = _dataSource.max - _dataSource.min;
+        long interval = _config.max - _config.min;
         
-        CGFloat percentage = interval > 0? (1 - fabs(number-_dataSource.min)/labs(interval)) : 1;
+        CGFloat percentage = interval > 0? (1 - fabs(number-_config.min)/labs(interval)) : 1;
         NSLog(@"percentage:%f",percentage);
         CGFloat yOffset = _chartYLength  * percentage + self.pointOffsety;
         CGFloat xOffset = self.xOffsetfirstItemX + _xItemWidth * (i + 1);
         CGPoint drawPoint = CGPointMake(xOffset, yOffset);
         [_drawPoints addObject:[NSValue valueWithCGPoint:drawPoint]];
     }
-    [self.drawLineView setPoints:_drawPoints uiconfig:_uiConfig];
+    [self.drawLineView setPoints:_drawPoints uiconfig:_config];
+}
+
+
+-(void)installPointsText {
+    if (self.config.disablePointText) {
+        return;
+    }
+    if (self.textBackView == nil) {
+        self.textBackView = [[UIView alloc] initWithFrame:self.bounds];
+        [self addSubview:self.textBackView];
+    }
+    for (UIView *tmpView in self.textBackView.subviews) {
+        [tmpView removeFromSuperview];
+    }
+    
+    for (NSInteger i = 0 ; i < _config.originNumbers.count; i ++) {
+        CGPoint drawPoint = [[_drawPoints objectAtIndex:i] CGPointValue];
+        
+        if (i < [self.config.originNumbers count]) {
+            NSString *pointStr  = [NSString stringWithFormat:@"%@", self.config.originNumbers[i]];
+            CGPoint realPoint = [self.drawLineView convertPoint:drawPoint toView:self];
+            UILabel *textLab = [[UILabel alloc] init];
+            textLab.textColor = self.config.pointHintTextColor;
+            textLab.font = self.config.pointHintTextFront;
+            textLab.text = pointStr;
+            [textLab sizeToFit];
+            CGRect frame = textLab.frame;
+            frame.origin.x = realPoint.x - frame.size.width * 0.5;
+            frame.origin.y = realPoint.y - frame.size.height - 5;
+            textLab.frame = frame;
+            [self.textBackView addSubview:textLab];
+        }
+    }
 }
 
 -(void)installYLines{
@@ -171,25 +208,25 @@
     coordYview.offsetSPaceXY = offset;
     coordYview.itemWith = itemtWidth;
     coordYview.isNeedSubscriptLine = NO;
-    coordYview.lineColor = _uiConfig.ylineColor;
-    coordYview.wordColor = _uiConfig.yDescColor;
-    coordYview.wordFont = _uiConfig.yDescFront;
+    coordYview.lineColor = _config.ylineColor;
+    coordYview.wordColor = _config.yDescColor;
+    coordYview.wordFont = _config.yDescFront;
     [self addSubview:coordYview];
     [self sendSubviewToBack:coordYview];
 }
 
 -(void)installXLines{
-    CGFloat count = [_dataSource.xDescriptionDataSource count];
+    CGFloat count = [_config.xDescriptionDataSource count];
     CGFloat y = self.bounds.size.height - self.xBottomHeight;
     GlXYCoordView *coordXview = [[GlXYCoordView alloc] initWithFrame:CGRectMake(0, y, _xItemWidth * count + self.xRightSpaceWidth + self.xOffsetfirstItemX, self.xBottomHeight)];
     self.coordXview = coordXview;
     coordXview.itemWith = _xItemWidth;
     coordXview.directon = GlDirectionX;
-    coordXview.titleArray = _dataSource.xDescriptionDataSource;
-    coordXview.lineColor = _uiConfig.xlineColor;
-    coordXview.wordColor = _uiConfig.xDescColor;
-    coordXview.wordFont = _uiConfig.xDescFront;
-    coordXview.iscurtailHiddenEmptyTitle = _uiConfig.iscurtailX;
+    coordXview.titleArray = _config.xDescriptionDataSource;
+    coordXview.lineColor = _config.xlineColor;
+    coordXview.wordColor = _config.xDescColor;
+    coordXview.wordFont = _config.xDescFront;
+    coordXview.iscurtailHiddenEmptyTitle = _config.iscurtailX;
     coordXview.offsetSPaceXY = self.xOffsetfirstItemX;
     [self.contentScrollView addSubview:coordXview];
     [self.contentScrollView sendSubviewToBack:coordXview];
@@ -204,7 +241,7 @@
     sRect.origin.x = self.yLeftWidth;
     sRect.size.width = sRect.size.width - self.yLeftWidth;
     _contentScrollView.frame = sRect;
-    CGFloat contentWidth = _xItemWidth * (_dataSource.xDescriptionDataSource.count);
+    CGFloat contentWidth = _xItemWidth * (_config.xDescriptionDataSource.count);
     _contentScrollView.contentSize = CGSizeMake(contentWidth + self.xRightSpaceWidth + self.xOffsetfirstItemX, self.bounds.size.height);
     
     //绘图
@@ -229,20 +266,20 @@
     NSMutableArray *array = [[NSMutableArray alloc] init];
     
     double interval = 0;
-    if (self.dataSource.min >= 0) {
-        interval = self.dataSource.max / (float)(self.numberOfYLines);
+    if (self.config.min >= 0) {
+        interval = self.config.max / (float)(self.numberOfYLines);
         
     }
     else{
-        interval = (self.dataSource.max - self.dataSource.min) / (float)(self.numberOfYLines);
+        interval = (self.config.max - self.config.min) / (float)(self.numberOfYLines);
     }
     
     NSString *preStr = @"";
     for (int i = 0; i < self.numberOfYLines + 1; i++) {
-        double nowSign = (self.dataSource.min + interval * i) / ChartMulriple;
+        double nowSign = (self.config.min + interval * i) / ChartMulriple;
         
         NSNumber *showNum = [NSNumber numberWithDouble:nowSign];
-        NSString * tmp = [NSString stringWithFormat:@"%@%@",[self decimalWithNUmber:showNum num:_uiConfig.decimalNum],self.dataSource.ySuffix];
+        NSString * tmp = [NSString stringWithFormat:@"%@%@",[self decimalWithNUmber:showNum num:self.config.decimalNum], self.config.ySuffix];
         
         NSString *showTmp = tmp;
         if ([preStr isEqualToString:tmp] && i != 0) {//前一个数据和当前一样，则当前的置空不显示，防止都是0%的情况
@@ -285,7 +322,7 @@
     }
     
     CGPoint drawPoint = [[_drawPoints objectAtIndex:index-1] CGPointValue];
-    NSArray *array = [self.delegate glPopClickShowContent:_dataSource index:index-1];
+    NSArray *array = [self.delegate glPopClickShowContent:self.config index:index-1];
     CGFloat backWith = [self contentLength:array font:[UIFont systemFontOfSize:11]] + 10;
     CGFloat lineHeight = 18;
     CGFloat height = lineHeight * [array count] + 20;
@@ -320,7 +357,7 @@
 
 - (CGRect)getShowBackViewFrameWithNowPoint:(CGPoint)drawPoint
 {
-    CGRect drawRect = CGRectMake(drawPoint.x - _uiConfig.circleWidth, drawPoint.y - _uiConfig.circleWidth,  _uiConfig.circleWidth * 2,  _uiConfig.circleWidth * 2);
+    CGRect drawRect = CGRectMake(drawPoint.x - self.config.circleWidth, drawPoint.y - self.config.circleWidth,  self.config.circleWidth * 2,  self.config.circleWidth * 2);
     
     CGFloat backWith = self.curPopSize.width;
     CGFloat height = self.curPopSize.height;

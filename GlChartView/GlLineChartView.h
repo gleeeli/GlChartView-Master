@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GlChartDataModel.h"
 #import "GlChartConfig.h"
 #import "GlChartViewDelegate.h"
 
 @interface GlLineChartView : UIView
 @property (nonatomic, weak) id<GlChartViewDelegate> delegate;
--(void)setupDataSource:(GlChartDataModel *)data withUIConfgi:(GlChartConfig *)config;
+-(void)setupwithConfgi:(GlChartConfig *)config;
 @end

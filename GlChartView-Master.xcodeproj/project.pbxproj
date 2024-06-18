@@ -14,7 +14,6 @@
 		1947E5FF213F89A500B5E932 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1947E5FD213F89A500B5E932 /* LaunchScreen.storyboard */; };
 		1947E602213F89A500B5E932 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1947E601213F89A500B5E932 /* main.m */; };
 		1947E616213F89D900B5E932 /* GlChartConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1947E609213F89D900B5E932 /* GlChartConfig.m */; };
-		1947E617213F89D900B5E932 /* GlChartDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1947E60A213F89D900B5E932 /* GlChartDataModel.m */; };
 		1947E618213F89D900B5E932 /* GlBasicAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1947E60B213F89D900B5E932 /* GlBasicAnimation.m */; };
 		1947E619213F89D900B5E932 /* GlDrawLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1947E60E213F89D900B5E932 /* GlDrawLineView.m */; };
 		1947E61A213F89D900B5E932 /* GlXYCoordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1947E614213F89D900B5E932 /* GlXYCoordView.m */; };
@@ -35,7 +34,6 @@
 		1947E600213F89A500B5E932 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1947E601213F89A500B5E932 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1947E609213F89D900B5E932 /* GlChartConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlChartConfig.m; sourceTree = "<group>"; };
-		1947E60A213F89D900B5E932 /* GlChartDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlChartDataModel.m; sourceTree = "<group>"; };
 		1947E60B213F89D900B5E932 /* GlBasicAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlBasicAnimation.m; sourceTree = "<group>"; };
 		1947E60C213F89D900B5E932 /* GlLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlLineChartView.h; sourceTree = "<group>"; };
 		1947E60D213F89D900B5E932 /* GlXYCoordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlXYCoordView.h; sourceTree = "<group>"; };
@@ -43,7 +41,6 @@
 		1947E60F213F89D900B5E932 /* GlChartViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlChartViewDelegate.h; sourceTree = "<group>"; };
 		1947E610213F89D900B5E932 /* GlChartConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlChartConfig.h; sourceTree = "<group>"; };
 		1947E611213F89D900B5E932 /* GlBasicAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlBasicAnimation.h; sourceTree = "<group>"; };
-		1947E612213F89D900B5E932 /* GlChartDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlChartDataModel.h; sourceTree = "<group>"; };
 		1947E613213F89D900B5E932 /* GlDrawLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlDrawLineView.h; sourceTree = "<group>"; };
 		1947E614213F89D900B5E932 /* GlXYCoordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlXYCoordView.m; sourceTree = "<group>"; };
 		1947E615213F89D900B5E932 /* GlLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlLineChartView.m; sourceTree = "<group>"; };
@@ -113,8 +110,6 @@
 				1947E60B213F89D900B5E932 /* GlBasicAnimation.m */,
 				1947E610213F89D900B5E932 /* GlChartConfig.h */,
 				1947E609213F89D900B5E932 /* GlChartConfig.m */,
-				1947E612213F89D900B5E932 /* GlChartDataModel.h */,
-				1947E60A213F89D900B5E932 /* GlChartDataModel.m */,
 				1947E60F213F89D900B5E932 /* GlChartViewDelegate.h */,
 				1947E613213F89D900B5E932 /* GlDrawLineView.h */,
 				1947E60E213F89D900B5E932 /* GlDrawLineView.m */,
@@ -230,7 +225,6 @@
 				1947E61A213F89D900B5E932 /* GlXYCoordView.m in Sources */,
 				1947E618213F89D900B5E932 /* GlBasicAnimation.m in Sources */,
 				1947E5F7213F89A500B5E932 /* ViewController.m in Sources */,
-				1947E617213F89D900B5E932 /* GlChartDataModel.m in Sources */,
 				1947E616213F89D900B5E932 /* GlChartConfig.m in Sources */,
 				1947E619213F89D900B5E932 /* GlDrawLineView.m in Sources */,
 				1947E61B213F89D900B5E932 /* GlLineChartView.m in Sources */,
