@@ -21,6 +21,14 @@
 @property (nonatomic, assign) NSInteger decimalNum;
 //y轴分的段数
 @property (nonatomic, assign) NSInteger linesCountY;
+//是否显示y轴竖线
+@property (nonatomic, assign) BOOL isShowYline;
+//是否显示y轴右边水平延伸线线
+@property (nonatomic, assign) BOOL isShowYHorizontalStretchline;
+//是否显示y轴水平左边延伸凸点
+@property (nonatomic, assign) BOOL isShowYLeftGuideline;
+//文字与y轴的间隙
+@property (nonatomic, assign) CGFloat wordYInset;
 
 //x轴
 @property (nonatomic,retain) UIFont *xDescFront ;

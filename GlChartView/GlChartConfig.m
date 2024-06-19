@@ -19,13 +19,13 @@
     //y轴
     GlChartConfig *config = [GlChartConfig new];
     config.yDescFront = [UIFont systemFontOfSize:11.0];
-    config.yDescColor = [UIColor colorWithRed:153.0f/255.0f green:153.0f/255.0f blue:153.0f/255.0f alpha:1.0f];
-    config.ylineColor =  [UIColor colorWithRed:204.0f/255.0f green:204.0f/255.0f blue:204.0f/255.0f alpha:0.5f];
+    config.yDescColor = [UIColor colorWithWhite:1 alpha:0.7];
+    config.ylineColor = [UIColor colorWithWhite:1 alpha:0.6];
     
     //x轴
     config.xDescFront = [UIFont systemFontOfSize:11.0];
-    config.xDescColor = [UIColor colorWithRed:153.0f/255.0f green:153.0f/255.0f blue:153.0f/255.0f alpha:1.0f];
-    config.xlineColor =  [UIColor colorWithRed:204.0f/255.0f green:204.0f/255.0f blue:204.0f/255.0f alpha:0.5f];
+    config.xDescColor = [UIColor colorWithWhite:1 alpha:0.7];
+    config.xlineColor = [UIColor colorWithWhite:1 alpha:0.6];
     //线
     config.lineWidth = 2;
     config.lineColor = [UIColor colorWithRed:56/255.0 green:137/255.0 blue:255/255.0 alpha:1];
@@ -35,6 +35,10 @@
     
     config.pointHintTextFront = [UIFont systemFontOfSize:12.0];
     config.pointHintTextColor = [UIColor colorWithWhite:1 alpha:0.8];
+    config.ySuffix = @"";
+    config.isShowYHorizontalStretchline = YES;
+    config.isShowYline = YES;
+    config.wordYInset = 5;
     return config;
 }
 

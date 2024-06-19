@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GlChartConfig.h"
 
 typedef enum : NSUInteger {
     GlDirectionX,
     GlDirectionY,
 } GlDirectionType;
+
 @interface GlXYCoordView : UIView
 @property (nonatomic, assign) GlDirectionType directon;
 @property (nonatomic, assign) CGFloat itemWith;//每格间距
@@ -27,4 +29,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL isNeedGuidLine;//是否需要引导线
 @property (nonatomic, assign) CGFloat offsetSPaceXY;//尾部需要偏移值 不然字显示不全
 @property (nonatomic, assign) BOOL iscurtailHiddenEmptyTitle;//是否隐藏空字符的下标 default NO
+@property (nonatomic, strong) GlChartConfig *config;
+
 @end

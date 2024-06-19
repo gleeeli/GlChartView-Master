@@ -22,14 +22,12 @@
 @property (nonatomic, assign) CGFloat xItemWidth;
 @property (nonatomic, assign) CGFloat chartYLength;//y轴线高度
 @property (nonatomic, assign) CGFloat xBottomHeight;//x轴线和文字总高度
-@property (nonatomic, assign) CGFloat yLeftWidth;//y轴线和文字总高度
+@property (nonatomic, assign) CGFloat yLeftWidth;//y轴线和文字总宽度
 @property (nonatomic, assign) NSInteger numberOfYLines;
 @property (nonatomic, assign) CGFloat pointOffsety;//点偏移值
 @property (nonatomic, assign) CGFloat topOffset;//顶部偏移
 ////x轴最后一个元素显示不全的考虑，增加点宽度
 @property (nonatomic, assign) CGFloat xRightSpaceWidth;
-//x轴第一个元素偏移值，默认为一个元素宽度，考虑文字过长左边被切的情况
-@property (nonatomic, assign) CGFloat xOffsetfirstItemX;
 @property (nonatomic, strong) GlXYCoordView *coordYview;
 @property (nonatomic, strong) GlXYCoordView *coordXview;
 @property (nonatomic, strong) GlPopView *showBackView;
@@ -77,6 +75,8 @@
     if (config.scaleNumbers.count == 0) {
         return;
     }
+    
+    [self updateBaseLayout];
     
     if (config.linesCountY > 0) {
         self.numberOfYLines = config.linesCountY;
@@ -134,10 +134,7 @@
     }
     _xItemWidth = _xItemWidth < MinItemWith? MinItemWith:_xItemWidth;
     
-    //得到元素跨度后计算出偏移值，因为其它控件都是按元素宽度排坐标的
-    self.xOffsetfirstItemX = minSpaceWidth - _xItemWidth;
-    
-    NSLog(@"最小宽度:%f",_xItemWidth);
+    //NSLog(@"最小宽度:%f",_xItemWidth);
 }
 
 /**
@@ -151,16 +148,18 @@
         long interval = _config.max - _config.min;
         
         CGFloat percentage = interval > 0? (1 - fabs(number-_config.min)/labs(interval)) : 1;
-        NSLog(@"percentage:%f",percentage);
+        //NSLog(@"percentage:%f",percentage);
         CGFloat yOffset = _chartYLength  * percentage + self.pointOffsety;
-        CGFloat xOffset = self.xOffsetfirstItemX + _xItemWidth * (i + 1);
+        CGFloat xOffset = _xItemWidth * i;
         CGPoint drawPoint = CGPointMake(xOffset, yOffset);
+        
+        //NSLog(@"drawPoint:%@", NSStringFromCGPoint(drawPoint));
         [_drawPoints addObject:[NSValue valueWithCGPoint:drawPoint]];
     }
     [self.drawLineView setPoints:_drawPoints uiconfig:_config];
 }
 
-
+//绘制每个点上方的提示文字
 -(void)installPointsText {
     if (self.config.disablePointText) {
         return;
@@ -175,10 +174,10 @@
     
     for (NSInteger i = 0 ; i < _config.originNumbers.count; i ++) {
         CGPoint drawPoint = [[_drawPoints objectAtIndex:i] CGPointValue];
-        
-        if (i < [self.config.originNumbers count]) {
+        //第一个不会绘制，y坐标就在第一个，没必要
+        if (i > 0 && i < [self.config.originNumbers count]) {
             NSString *pointStr  = [NSString stringWithFormat:@"%@", self.config.originNumbers[i]];
-            CGPoint realPoint = [self.drawLineView convertPoint:drawPoint toView:self];
+            CGPoint realPoint = [self.drawLineView convertPoint:drawPoint toView:self.textBackView];
             UILabel *textLab = [[UILabel alloc] init];
             textLab.textColor = self.config.pointHintTextColor;
             textLab.font = self.config.pointHintTextFront;
@@ -188,6 +187,7 @@
             frame.origin.x = realPoint.x - frame.size.width * 0.5;
             frame.origin.y = realPoint.y - frame.size.height - 5;
             textLab.frame = frame;
+            
             [self.textBackView addSubview:textLab];
         }
     }
@@ -203,14 +203,16 @@
     self.coordYview = coordYview;
     coordYview.directon = GlDirectionY;
     coordYview.titleArray = yArray;
-    coordYview.isNeedGuidLine = YES;
+    coordYview.isNeedGuidLine = self.config.isShowYHorizontalStretchline;
     coordYview.mainMaxWith = self.yLeftWidth;
     coordYview.offsetSPaceXY = offset;
     coordYview.itemWith = itemtWidth;
-    coordYview.isNeedSubscriptLine = NO;
+    coordYview.isNeedSubscriptLine = self.config.isShowYLeftGuideline;
     coordYview.lineColor = _config.ylineColor;
     coordYview.wordColor = _config.yDescColor;
     coordYview.wordFont = _config.yDescFront;
+    coordYview.wordInsert = _config.wordYInset;
+    coordYview.config = self.config;
     [self addSubview:coordYview];
     [self sendSubviewToBack:coordYview];
 }
@@ -218,7 +220,8 @@
 -(void)installXLines{
     CGFloat count = [_config.xDescriptionDataSource count];
     CGFloat y = self.bounds.size.height - self.xBottomHeight;
-    GlXYCoordView *coordXview = [[GlXYCoordView alloc] initWithFrame:CGRectMake(0, y, _xItemWidth * count + self.xRightSpaceWidth + self.xOffsetfirstItemX, self.xBottomHeight)];
+    CGFloat offsetX = self.xRightSpaceWidth;
+    GlXYCoordView *coordXview = [[GlXYCoordView alloc] initWithFrame:CGRectMake(-offsetX, y, _xItemWidth * count + self.xRightSpaceWidth, self.xBottomHeight)];
     self.coordXview = coordXview;
     coordXview.itemWith = _xItemWidth;
     coordXview.directon = GlDirectionX;
@@ -227,22 +230,29 @@
     coordXview.wordColor = _config.xDescColor;
     coordXview.wordFont = _config.xDescFront;
     coordXview.iscurtailHiddenEmptyTitle = _config.iscurtailX;
-    coordXview.offsetSPaceXY = self.xOffsetfirstItemX;
+    coordXview.offsetSPaceXY = offsetX;
+    coordXview.config = self.config;
     [self.contentScrollView addSubview:coordXview];
     [self.contentScrollView sendSubviewToBack:coordXview];
 }
 
 -(void)layoutSubviews{
     [super layoutSubviews];
+    [self updateBaseLayout];
+}
+
+- (void)updateBaseLayout {
     //y轴每一段高度
     //CGFloat lineHeight = _chartYLength/(_numberOfYLines - 1);
     
     CGRect sRect = self.bounds;
     sRect.origin.x = self.yLeftWidth;
     sRect.size.width = sRect.size.width - self.yLeftWidth;
+    
+    //NSLog(@"sRect:%@", NSStringFromCGRect(sRect));
     _contentScrollView.frame = sRect;
     CGFloat contentWidth = _xItemWidth * (_config.xDescriptionDataSource.count);
-    _contentScrollView.contentSize = CGSizeMake(contentWidth + self.xRightSpaceWidth + self.xOffsetfirstItemX, self.bounds.size.height);
+    _contentScrollView.contentSize = CGSizeMake(contentWidth + self.xRightSpaceWidth, self.bounds.size.height);
     
     //绘图
     CGFloat bottomDrawOffset = 10;//防止底部被截断
@@ -457,6 +467,7 @@
         _contentScrollView = [UIScrollView new];
         _contentScrollView.showsHorizontalScrollIndicator = NO;
         _contentScrollView.delegate = self;
+        _contentScrollView.clipsToBounds = NO;
         [self addSubview:_contentScrollView];
     }
     return _contentScrollView;

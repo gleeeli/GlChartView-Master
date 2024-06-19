@@ -66,7 +66,9 @@
 - (void)drawXRect:(CGRect)rect{
     CGSize size = rect.size;
     CGFloat yoffset = self.lineWidth * 0.5;
-    CGPoint lastPoint = CGPointMake(0, yoffset);
+    
+    CGFloat startX = self.offsetSPaceXY;
+    CGPoint lastPoint = CGPointMake(startX, yoffset);
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     //先画横线
@@ -75,7 +77,7 @@
     
     for (int i = 0; i < [self.titleArray count]; i++) {
         NSString *title = self.titleArray[i];
-        CGFloat nowX = self.offsetSPaceXY + _itemWith * (i + 1);
+        CGFloat nowX = startX + _itemWith * i;
         
         //小凸点
         if (self.isNeedSubscriptLine) {
@@ -138,18 +140,18 @@
  */
 - (void)drawYRect:(CGRect)rect{
     CGSize size = rect.size;
-    CGFloat maxWidth = size.width;
+    //左边的y轴，和左边的文字这块的最大宽度
+    CGFloat maxWidth = self.mainMaxWith;
     CGFloat bottomY = size.height - self.offsetSPaceXY;
-    if (self.isNeedGuidLine) {
-        maxWidth = self.mainMaxWith;
-    }
-    CGPoint lastPoint = CGPointMake(maxWidth, 0);
+    CGPoint lastPoint = CGPointMake(maxWidth, _itemWith);
     
     CGFloat startX = maxWidth;
     UIBezierPath *path = [UIBezierPath bezierPath];
-    //先画竖线
-    [path moveToPoint:lastPoint];
-    [path addLineToPoint:CGPointMake(startX, bottomY)];
+    if (self.config.isShowYline) {
+        //先画竖线
+        [path moveToPoint:lastPoint];
+        [path addLineToPoint:CGPointMake(startX, bottomY)];
+    }
     
     // y轴线部分的最左边的坐标
     CGFloat endX = (startX - self.subScriptLenght);
@@ -162,7 +164,7 @@
             CGPoint nowPoint = CGPointMake(startX, nowY);
             CGPoint nowLeftPoint = CGPointMake(endX, nowY);
             
-            //画向下坐标线
+            //画向左坐标线
             [path moveToPoint:nowPoint];
             [path addLineToPoint:nowLeftPoint];
         }
